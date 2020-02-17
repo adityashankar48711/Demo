@@ -45,10 +45,21 @@ node {
         server.upload(uploadSpec)
         
         }
-     
-   stage('Docker-Stage-Deployment') {
-   sh label: 'DOCKER DEPLOYMENT', script: 'docker-compose up -d --build'
-  }
+  stage('Jfrog Artifactory download'){
+    def server= Artifactory.server 'Artifactory'
+    def downloadSpec = """{
+    "files": [
+    {
+      "pattern": "petclinic/*.war",
+      "target": "/home/mtadminnuvepro/artifacts/"
+      
+    }
+    ]
+    }"""
+    server.download(downloadSpec)
+   
+}     
+   
 	 
 
 
