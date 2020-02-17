@@ -59,10 +59,7 @@ node {
     server.download(downloadSpec)
    
 }     
-   
-	 
-
-
+  	 
 }
 
 notify('Job Completed')   
